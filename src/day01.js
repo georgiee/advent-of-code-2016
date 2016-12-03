@@ -1,7 +1,10 @@
-// console.log('mai2');
-
 export function run(){
-    window.onload=build;
+    /*
+        I started with ES5 (to make this project not so complex with Babel)
+        but then switched to webpack2 on day 2 to use ES6 (without compiling to ES5)
+        This is my quick & dirty port of the ES5 version.
+     */
+    window.onload = build;
 }
 
 var ctx;
