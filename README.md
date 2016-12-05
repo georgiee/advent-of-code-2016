@@ -37,3 +37,14 @@ https://tour.golang.org/welcome/1
 
 Running example is here;  
 [https://play.golang.org/p/f2YkTqh5Hk](https://play.golang.org/p/f2YkTqh5Hk)
+
+
+
+## [Day 05 (elixir)](https://github.com/georgiee/advent-of-code-2016/blob/master/05-elixir/playground.exs)
+Awesome start of the day with elixir. What a brilliant peace of art this programming language 👊😍
+  
+  
+Love:  the pattern matching and the guards.  
+Hard parts: Getting into the functional thinking mood.
+
+
