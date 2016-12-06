@@ -48,3 +48,14 @@ Love:  the pattern matching and the guards.
 Hard parts: Getting into the functional thinking mood.
 
 
+## 
+## [Day06 (Haskell)](https://github.com/georgiee/advent-of-code-2016/blob/master/06-haskell/Solution.hs)
+Again lovely pattern matching, Currying, higher order functions. I feel like walking out of Platon's cave 😎
+
+Super easy to combine different functions which is the spirit of functional programming.
+
+Solution for second version of the problem was a matter of seconds as I jsut switched the comparing function.
+
+
+# Programming Arts
+Elixir, Haskell, Smalltalk, Scratch (Kids Programming)
