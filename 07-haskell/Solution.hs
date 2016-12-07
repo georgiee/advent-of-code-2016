@@ -1,8 +1,11 @@
 -- http://book.realworldhaskell.org/read/using-parsec.html
 -- http://adventofcode.com/2016/day/7/input
 -- http://stackoverflow.com/questions/10168756/parsing-a-string-in-haskell
+-- https://www.haskell.org/hoogle/?hoogle=%5BBool%5D+-%3E+Bool
+
 -- :m + Data.List
 module Main where
+import Debug.Trace
 
 --import qualified Prelude as P
 --import Text.Regex.Posix
@@ -10,7 +13,7 @@ import Data.List
 
 import Text.ParserCombinators.Parsec
 
-testinput = "dnwtsgywerfamfv[gwrhdujbiowtcirq]bjbhmuxdcasenlctwgh\ndnwtsgywerfamfv[gwrhdujbiowtcirq]bjbhmuxdcasenlctwgh\n"
+testinput = "abba[mnop]qrst\n"
 --result = testinput =~ "[(a-z)]" :: String
 
 --csvFile = endBy line eol
@@ -24,11 +27,15 @@ testinput = "dnwtsgywerfamfv[gwrhdujbiowtcirq]bjbhmuxdcasenlctwgh\ndnwtsgywerfam
 --eol2 :: Parser P.String
 --eol2 = string "\n" <|> string "\n\r"
 
-data IP = Address String | Hypernet String deriving Show
+data IP = Address String | Hypernet String deriving (Eq, Ord)
 
+-- or use deriving: Show 
+instance Show IP where  
+    show (Address s) = "Address " ++ s
+    show (Hypernet s) = "Hypernet " ++ s
 
 content :: GenParser Char st [[IP]]
-content = endBy line eol
+content = line `endBy` newline
 --content = 
 
 line = many (address <|> hypernet)
@@ -38,6 +45,8 @@ hypernet = Hypernet <$> (string "[" *> many (noneOf "]") <* string "]")
 
 parseS :: String -> Either ParseError [[IP]]
 parseS input = parse content "" input
+
+
 
 acceptance1 value = (reverse value) == value
 acceptance2 value = length(group value) == 3
@@ -51,13 +60,55 @@ windowed :: Int -> [a] -> [[a]]
 windowed size [] = []
 windowed size ls@(x:xs) = if length ls >= size then (take size ls) : windowed size xs else windowed size xs 
 
-eol = char '\n'
+
+
+-- Put simply, . is function composition, just like in math:
+-- f (g x) = (f . g) x
+--https://wiki.haskell.org/Pointfree
+
+countTrues = length . filter (== True)
+isValidTLS ip = do {
+    let validAdresspart = or [ testAddressPart a| a <- getAddresses(ip)]
+    ;let validHypernet = [ testAddressPart a| a <- getHypernet(ip)]
+    ;and $ validAdresspart : validHypernet
+
+    --[(part, testAddressPart(part)) | part <- ip]
+}
+
+testAddressPart :: IP -> Bool
+testAddressPart (Address s) = containsAbba(s)
+testAddressPart (Hypernet s) = not $ containsAbba(s)
+
+containsAbba s = or $ map abbatest (windowed 4 s)
+
+
+countValidTLS xs = do {
+    --map isValidTLS xs
+    countTrues $ map isValidTLS xs
+}
+
+extractHypernet :: IP -> Maybe String
+extractHypernet (Hypernet a) = Just a
+extractHypernet _ = Nothing
+
+isHypernet (Hypernet _) = True
+isHypernet _         = False
+
+isAddress (Address _) = True
+isAddress _         = False
+
+getHypernet = filter isHypernet
+getAddresses = filter isAddress
 
 main  = do
-    let result = parseS testinput
+    --let xxx = [Address "xx", Hypernet "dnwtsgyabbaawerfamfv", Address "acccdabdbasdsd"] 
+    --print( isValidTLS xxx )
+    --print(extractHypernet(Hypernet "dnwtsgyawerfamfv"))
+    input <- readFile "input.txt"
+    let result = parseS input
     case result of
         Left err  -> print err
-        Right xs  -> print (windowed 4 "dnwtsgywerfamfv")
+        Right xs  -> print (countValidTLS(xs))
     --let r <- parseS testinput
     --print r
     -- print([ (abbatest x, x) | x <- permutations("abba")])
