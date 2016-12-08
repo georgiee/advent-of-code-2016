@@ -67,6 +67,8 @@ I also searched a long time to seaprate the address parts from the hypernet part
 [The solution for part 1](https://github.com/georgiee/advent-of-code-2016/blob/master/07-haskell/Solution.hs) is really nice and after tidying up it can look beautiful too.
 [The solution for part 2](https://github.com/georgiee/advent-of-code-2016/blob/master/07-haskell/Solution2.hs), well that got ugly as I just wanted to get the solution as it got late 😴 But anyway I got the solution, yeah!
 
+Other pitfalls: Left/Right decoding, calling of windowed with paranthesis + space is weird
+windowed function is pretty nice, parsing is awesome
 
 # Programming Arts
 Elixir, Haskell, Smalltalk, Scratch (Kids Programming)
