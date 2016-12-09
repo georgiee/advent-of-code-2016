@@ -70,5 +70,11 @@ I also searched a long time to seaprate the address parts from the hypernet part
 Other pitfalls: Left/Right decoding, calling of windowed with paranthesis + space is weird
 windowed function is pretty nice, parsing is awesome
 
+## [Day08 (JS+Canvas)](https://github.com/georgiee/advent-of-code-2016/blob/master/src/day08.js)
+Nothign special, I chosse JS for a little canvas rendering as I wanted to drop in a 3d renderer instead later. But no time.
+
+## [Day09 (RUBY)](https://github.com/georgiee/advent-of-code-2016/blob/master/07-haskell/Solution.hs)
+This was crazy. Thanks to StringScanner I got a solution for part 1 realtive quickly. But oh boy, part 2 was hard and my solution needs a calculation time of nearly 30mins. There are other solutions working in a matter of milliseconds 🙄 Well I call it a day now.
+
 # Programming Arts
 Elixir, Haskell, Smalltalk, Scratch (Kids Programming)
