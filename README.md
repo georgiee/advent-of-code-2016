@@ -78,3 +78,13 @@ This was crazy. Thanks to StringScanner I got a solution for part 1 realtive qui
 
 # Programming Arts
 Elixir, Haskell, Smalltalk, Scratch (Kids Programming)
+
+
+## Day10
+Failed. Too much time realizing that it's a graph problem.
+
+## Day11
+It's about buildig up an [algorithm](https://en.wikipedia.org/wiki/Missionaries_and_cannibals_problem) AND performing an optimization if you are not picking up the algorithm already done from somewhere. I had no time doing so much.
+
+## [Day12 (RUBY)](https://github.com/georgiee/advent-of-code-2016/blob/master/12-ruby/solution.rb)
+Yeah. Easy again. This is more or less building a computer processing instructions. This was fun.

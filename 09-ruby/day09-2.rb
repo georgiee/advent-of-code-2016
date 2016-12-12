@@ -11,7 +11,7 @@ def parse input, sum = 0
   while not scanner.eos?
     string = scanner.scan(/[^()]+/)
     sum = sum + string.length unless string.nil?
-
+    
     if scanner.peek(1) == '('
       scanner.pos = scanner.pos + 1
       marker = scanner.scan(/[^()]+/).split('x')
@@ -34,6 +34,6 @@ end
 
 
 file = File.open("input.txt", "r")
-inputs = parse file.read
-#inputs = parse "(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN"
+#inputs = parse file.read
+inputs = parse "(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN"
 puts inputs
